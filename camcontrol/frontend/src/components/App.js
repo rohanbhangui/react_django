@@ -7,4 +7,3 @@ const root = createRoot(cam);
 root.render(
     <Cam />
 );
-

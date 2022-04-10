@@ -24,26 +24,20 @@ import { leftCheek } from "./utilities";
 function Cam() {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
-  const [image, setImage] = useState('');
+  const [image, setImage] = useState(null);
+  
   var capture;
 
-  /*
-  const snap = React.useCallback(() => {
-    
-    console.log("reached snap");
-    setTimeout(() => {
-      if (typeof webcamRef.current !== "undefined" &&
-      webcamRef.current !== null &&
-      webcamRef.current.video.readyState === 4){
-        capture = webcamRef.current.getScreenshot();
-      }
-      
-    }, 10);
-    console.log("made it past timeout");
-    setImage(capture)
-    
-  }, [webcamRef]);
-  */
+  
+  
+  const snap = React.useCallback(
+    () => {
+      let imageSrc = webcamRef.current.getScreenshot();
+      setImage(imageSrc);
+      console.log("the url is" + imageSrc);
+    }, [webcamRef], [setImage]
+  );
+  
 
   //  Load posenet
   const runFacemesh = async () => {
@@ -105,6 +99,7 @@ function Cam() {
       <header className="App-header">
         <Webcam
           ref={webcamRef}
+          screenshotFormat="image/jpeg"
           style={{
             position: "absolute",
             marginLeft: "auto",
@@ -116,6 +111,7 @@ function Cam() {
             width: 640,
             height: 480,
           }}
+          
         />
 
         <canvas
@@ -132,10 +128,13 @@ function Cam() {
             height: 480,
           }}
         />
-        
-
-        
       </header>
+      <button onClick = {snap}> Capture Selfie </button>
+      {image && (
+        <img className="pic"
+          src={image}
+        />
+      )}
     </div>
   );
 }
