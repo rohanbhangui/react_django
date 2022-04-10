@@ -1,17 +1,10 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM, { createRoot } from 'react-dom/client';
 import Cam from './cam';
 
-class App extends Component{
-    render() {
-        return <h1>React App</h1>
-    }
-}
-
-const root = ReactDOM.createRoot(document.getElementById('app'));
+const cam = document.getElementById('root');
+const root = createRoot(cam);
 root.render(
-    <React.StrictMode>
-        <App />
-        <Cam />
-    </React.StrictMode>
+    <Cam />
 );
+

@@ -101,7 +101,7 @@ function Cam() {
   
 
   return (
-    <div className="App">
+    <div className="app">
       <header className="App-header">
         <Webcam
           ref={webcamRef}
@@ -132,9 +132,7 @@ function Cam() {
             height: 480,
           }}
         />
-        <div>
-          {image=== ''? <Webcam ref= {webcamRef} />:<img src = {image}/>}
-        </div>
+        
 
         
       </header>
