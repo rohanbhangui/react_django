@@ -1,17 +1,23 @@
 module.exports = {
+    
+    entry: ['./camcontrol\frontend\src\index.js']
+    ,
     module: {
         rules: [
             {
-            test: /\.js$/,
-            
-            use: {
-                loader: "babel-loader"
-                }
+              test: /\.css$/,
+              use: [
+                'style-loader',
+                'css-loader'
+              ]
             },
             {
-            test: /\.css$/i,
-            use: ["style-loader", "css-loader"],
-            }
-        ]
+              test: /\.js$/,
+              
+              use: [
+                'babel-loader'
+              ]
+            },
+          ]
     }
 }

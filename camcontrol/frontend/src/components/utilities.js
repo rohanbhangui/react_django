@@ -2675,6 +2675,7 @@ const drawPath = (ctx, points, closePath) => {
 export const drawMesh = (predictions, ctx) => {
   if (predictions.length > 0) {
     predictions.forEach((prediction) => {
+      console.log("here");
       leftCheek.leftCheek_x = prediction.annotations.leftCheek[0][0];
       leftCheek.leftCheek_y = prediction.annotations.leftCheek[0][1];
       rightCheek.rightCheek_x = prediction.annotations.rightCheek[0][0];

@@ -10,7 +10,8 @@
 // Face Mesh - https://github.com/tensorflow/tfjs-models/tree/master/facemesh
 
 import React, { useRef, useEffect, useState } from "react";
-import "./cam.css";
+
+import Rectangle from "./oval.js";
 import * as tf from "@tensorflow/tfjs";
 // OLD MODEL
 //import * as facemesh from "@tensorflow-models/facemesh";
@@ -25,8 +26,12 @@ function Cam() {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
   const [image, setImage] = useState(null);
+  let valid = false;
+  const rect = useRef(null);
+  let rectCtx = null;
   
-  var capture;
+  
+
 
   
   
@@ -34,10 +39,9 @@ function Cam() {
     () => {
       let imageSrc = webcamRef.current.getScreenshot();
       setImage(imageSrc);
-      console.log("the url is" + imageSrc);
     }, [webcamRef], [setImage]
   );
-  
+
 
   //  Load posenet
   const runFacemesh = async () => {
@@ -47,6 +51,7 @@ function Cam() {
     //   scale: 0.8,
     // });
     // NEW MODEL
+    
     const net = await facemesh.load(facemesh.SupportedPackages.mediapipeFacemesh);
     setInterval(() => {
       detect(net);
@@ -77,7 +82,14 @@ function Cam() {
       //       const face = await net.estimateFaces(video);
       // NEW MODEL
       const face = await net.estimateFaces({input:video});
-      console.log(face);
+      console.log(leftCheek.leftCheek_x);
+      if(leftCheek.leftCheek_x < 430){
+        valid = true;
+      }
+      else{
+        valid = false;
+      }
+      console.log(valid);
 
       // Get canvas context
       const ctx = canvasRef.current.getContext("2d");
@@ -92,7 +104,12 @@ function Cam() {
     
   }, []);
   
-  
+  useEffect(() => {
+    const canvasEle = rect.current;
+    canvasEle.width = canvasEle.clientWidth;
+    canvasEle.height = canvasEle.clientHeight;
+    rectCtx = canvasEle.getContext("2d");
+  });
 
   return (
     <div className="app">
@@ -128,6 +145,7 @@ function Cam() {
             height: 480,
           }}
         />
+      <canvas className ={'rectangle ' + ({valid} ? 'good' : 'Error')} ref = {rect}> </canvas>
       </header>
       <button onClick = {snap}> Capture Selfie </button>
       {image && (
