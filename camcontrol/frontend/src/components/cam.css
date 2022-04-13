@@ -30,7 +30,7 @@ button {
   vertical-align: bottom;
 }
 
-.rectangle.Error {
+.rectangle {
 	position: relative;
 	width: 220px;
 	height: 300px;
@@ -42,14 +42,3 @@ button {
 	z-index: 10;
 }
 
-.rectangle.good {
-	position: relative;
-	width: 220px;
-	height: 300px;
-  border-radius: 50%;
-	background-color: transparent;
-	border: 5px solid green;
-	top: 0%;
-	left: 0%;
-	z-index: 10;
-}

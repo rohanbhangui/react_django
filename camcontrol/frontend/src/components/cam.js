@@ -83,11 +83,13 @@ function Cam() {
       // NEW MODEL
       const face = await net.estimateFaces({input:video});
       console.log(leftCheek.leftCheek_x);
+      let parent = document.querySelector('.rectangle');
       if(leftCheek.leftCheek_x < 430){
-        valid = true;
+        parent.style.border = '5px solid green';
+        
       }
       else{
-        valid = false;
+        parent.style.border = '5px solid white';
       }
       console.log(valid);
 
@@ -145,7 +147,7 @@ function Cam() {
             height: 480,
           }}
         />
-      <canvas className ={'rectangle ' + ({valid} ? 'good' : 'Error')} ref = {rect}> </canvas>
+      <canvas className = 'rectangle' ref = {rect}> </canvas>
       </header>
       <button onClick = {snap}> Capture Selfie </button>
       {image && (
