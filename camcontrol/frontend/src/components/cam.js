@@ -29,11 +29,12 @@ function Cam() {
   let valid = false;
   const rect = useRef(null);
   let rectCtx = null;
-  
-  
-
-
-  
+  const message = {
+    perfect : "Go ahead and take your selfie!",
+    centering : "Center yourself within the oval",
+    brightness : "Find better lighting",
+    obstructing : "There seems to be something in the way of your face"
+  };
   
   const snap = React.useCallback(
     () => {
@@ -77,21 +78,25 @@ function Cam() {
       canvasRef.current.width = videoWidth;
       canvasRef.current.height = videoHeight;
 
-      // Make Detections
-      // OLD MODEL
-      //       const face = await net.estimateFaces(video);
-      // NEW MODEL
+
+
+
       const face = await net.estimateFaces({input:video});
-      console.log(leftCheek.leftCheek_x);
       let parent = document.querySelector('.rectangle');
+      let txt = document.getElementById("text");
+      
+
+
+      
       if(leftCheek.leftCheek_x < 430){
         parent.style.border = '5px solid green';
+        txt.textContent= message.centering;
         
       }
       else{
         parent.style.border = '5px solid white';
+        txt.textContent = message.perfect;
       }
-      console.log(valid);
 
       // Get canvas context
       const ctx = canvasRef.current.getContext("2d");
@@ -99,10 +104,12 @@ function Cam() {
     }
   };
 
+
+
   useEffect(()=>{
     
     runFacemesh();
-    //snap();
+    
     
   }, []);
   
@@ -115,7 +122,7 @@ function Cam() {
 
   return (
     <div className="app">
-      <header className="App-header">
+      <div className="App-header">
         <Webcam
           ref={webcamRef}
           screenshotFormat="image/jpeg"
@@ -148,8 +155,10 @@ function Cam() {
           }}
         />
       <canvas className = 'rectangle' ref = {rect}> </canvas>
-      </header>
-      <button onClick = {snap}> Capture Selfie </button>
+      <div className = "message" id="text"></div>
+      <button onClick = {snap}> TAKE PHOTO </button>
+      </div>
+      
       {image && (
         <img className="pic"
           src={image}
