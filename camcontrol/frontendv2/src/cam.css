@@ -1,0 +1,76 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+
+.pic {
+  position:relative;
+  vertical-align: bottom;
+  width: 100px;
+  height: 100px;
+}
+
+button {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20px;
+  letter-spacing: 1px;
+  color: aliceblue;
+  opacity: 70%;
+  background-color: black;
+  top: 85%;
+  position:absolute;
+  z-index: 10;
+  width: 200px;
+  height: 40px;
+  padding: 1px;
+}
+
+.message {
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: aliceblue;
+  opacity: 30%;
+  background-color: black;
+  top: 30%;
+  position:absolute;
+  text-align: center;
+  z-index: 10;
+  width: 200px;
+  height: 40px;
+  padding-top: 8px;
+}
+
+.rectangle {
+	position: relative;
+	width: 220px;
+	height: 300px;
+  border-radius: 50%;
+	background-color: transparent;
+	border: 5px solid white;
+	top: 0%;
+	left: 0%;
+	z-index: 10;
+}
+
+
+video {
+  aspect-ratio: 800/ 600;
+}
+
