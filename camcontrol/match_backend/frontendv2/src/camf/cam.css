@@ -8,30 +8,21 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: rgb(156, 156, 148);
   width: 100%;
   height: 100%;
   position: absolute;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-video{
-  min-width: 100%; 
-  min-height: 100%; 
-
-  /* Setting width & height to auto prevents the browser from stretching or squishing the video */
-  width: auto;
-  height: auto;
-
-  /* Center the video */
-  position: absolute;
-  top: 50%;
-  left: 500px;
-  transform: translate(-50%,-50%);
+video {
+  position: inherit;
+  left: 1px;
+  right: 1px;
 }
+
 
 
 .pic {
@@ -48,7 +39,7 @@ button {
   color: aliceblue;
   opacity: 70%;
   background-color: black;
-  top: 85%;
+  top: 83%;
   position:absolute;
   z-index: 10;
   width: 200px;
@@ -58,12 +49,12 @@ button {
 
 .message {
   font-family:Georgia, 'Times New Roman', Times, serif;
-  font-size: 10px;
+  font-size: 14px;
   letter-spacing: 1px;
   color: aliceblue;
-  opacity: 30%;
+  opacity: 40%;
   background-color: black;
-  top: 20%;
+  top: 18%;
   position:absolute;
   text-align: center;
   z-index: 10;
@@ -82,10 +73,5 @@ button {
 	top: 0%;
 	left: 0%;
 	z-index: 10;
-}
-
-
-video {
-  aspect-ratio: 800/ 600;
 }
 

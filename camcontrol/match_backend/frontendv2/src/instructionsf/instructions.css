@@ -1,6 +1,7 @@
+
 section {
     background-color: white;
-    height: 400px;
+    height: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,6 +9,13 @@ section {
     font-size: 17px;
     color: black;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+p {
+    position: inherit;
+    text-align: center;
+    padding: 1px;
+    font-size: 12px;
 }
 
 .link {
@@ -25,16 +33,32 @@ section {
     border-bottom: 1px solid #333333;
     border-left: 1px solid #CCCCCC;
     background-color: white;
-    top: 85%;
+    top: 85vh;
     position:absolute;
     z-index: 10;
-    width: 400px;
-    height: 60px;
+    width: 450px;
+    height: 50px;
     padding: 1px;
     border-width: 2px;
     border-color: black;
   }
 
-div{
-    padding: 5px;
+.img1{
+    height: 120px;
+    width: 100px;
+    position:absolute;
+    left: 90px;
+}
+.img2{
+    height: 120px;
+    width: 100px;
+    position: relative;
+    left: 70px;
+}
+
+.img3 {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    
 }

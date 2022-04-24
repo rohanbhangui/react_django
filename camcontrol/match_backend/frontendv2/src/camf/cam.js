@@ -44,14 +44,7 @@ function Cam() {
 
 
   //  Load posenet
-  const runFacemesh = async () => {
-    // OLD MODEL
-    // const net = await facemesh.load({
-    //   inputResolution: { width: 640, height: 480 },
-    //   scale: 0.8,
-    // });
-    // NEW MODEL
-    
+  const runFacemesh = async () => {    
     const net = await facemesh.load(facemesh.SupportedPackages.mediapipeFacemesh);
     setInterval(() => {
       detect(net);
@@ -106,10 +99,7 @@ function Cam() {
 
 
   useEffect(()=>{
-    
     runFacemesh();
-    
-    
   }, []);
   
   useEffect(() => {
@@ -125,16 +115,9 @@ function Cam() {
         <Webcam
           ref={webcamRef}
           screenshotFormat="image/jpeg"
-          style={{
-            position: "absolute",
-            marginLeft: "auto",
-            marginRight: "auto",
-            //left: 0,
-            //right: 0,
-            textAlign: "center",
-            zindex: 9,
-            //width: 640,
-            //height: 480,
+          videoConstraints={{
+            width : 410,
+            height : 900
           }}
           
         />
@@ -150,8 +133,8 @@ function Cam() {
             right: 0,
             textAlign: "center",
             zindex: 9,
-            width: 640,
-            height: 480,
+            width: 400,
+            height: 720,
           }}
         />
       <canvas className = 'rectangle' ref = {rect}> </canvas>

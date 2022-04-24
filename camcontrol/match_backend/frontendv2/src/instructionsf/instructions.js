@@ -1,65 +1,74 @@
-import React, { Component } from 'react';
-import { Link, BrowserRouter as Router } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { Link} from "react-router-dom";
 import './instructions.css'
-import {deviceDetect, isIOS, isIPhone13, mobileModel, osVersion} from "react-device-detect"
-
+import {isIOS, mobileModel, osVersion} from "react-device-detect"
+import axios from 'axios';
+const good = require('../../src/static/good.jpeg');
+const bad = require('../../src/static/bad.jpeg');
 
 function Instructions() {
     const mobile_device = mobileModel;
     const version = osVersion;
     
     
+    const load_img = async () => {
+            console.log("mukesh");
+            const promise = await axios.get("http://localhost:8000/img/");
+            const status = promise.status;
+            if (status === 200){
+                const data = promise.data; 
+                console.log(data);
+            }
+        };      
+    
     const message = {
-        
-        i12 : 'Settings>Camera>Turn off Smart HDR',
-        i13 : 'Settings>Camera>Turn off Lens Control',
-        notphone: 'Not a mobile device'
+        i12_13 : 'Settings>Camera>Turn off Smart HDR or Lens Control',
+        android: 'Camera Settings>Turn off HDR and/or selfie color tone. If your camera has a beauty mode, turn that off too.',
+        notPhone: 'Not a mobile device'
     };
-
-    //const txt = document.getElementById('text1');
-    /*
-    if (isIOS && (isIPhone13)){
-        txt.textContent = message.i13;
-        
-    }
-    else if (!isIPhone13){
-        txt.textContent = message.i12;
-    }
-    else{
-        
-        txt.textContent = message.notphone;
-    }
-    */
+    
+    useEffect(() => {
+        load_img();
+    }, []);
+    
     return (
-
-        
             <section>
-            <div> 
-            Step 1: Graph a piece of white copy <br></br>paper. You will be folding this in the<br></br>next step.    
-            </div>
-            <div>
-            Step 2: Pull your hair back from your<br></br>face. Remove your glasses if you are<br></br>wearing them.
-            </div>
-            <div>
-            Step 3: Make sure you are in bright, natural<br></br>lighting.
-            </div>
-            <br></br>
-            <div>
-            Here is an example of a bad photo and a good photo.
-            </div>
-
-            <div>
-                The following is your mobile device : {mobile_device} {version}.
-            </div>
-            <div>
-            Thus, do the following to turn off beautification settings:
-            </div>
-            <div id = 'text1'>
-            </div>
-            
-            <Link className='link' to="/instructions2">CONTINUE</Link>
+                <p> 
+                Step 1: Graph a piece of white copy <br></br>paper. You will be folding this in the<br></br>next step.    
+                </p>
+                <p>
+                Step 2: Pull your hair back from your<br></br>face. Remove your glasses if you are<br></br>wearing them.
+                </p>
+                <p>
+                Step 3: Make sure you are in bright, natural<br></br>lighting.
+                </p>
+                <p>
+                Here is an example of a bad photo and a good photo.
+                </p>
+                <p>
+                <img className= "img1" src ={"http://localhost:8000/static/bad.jpeg"} alt = "nada"></img>
+                <img className= "img2" src ={"http://localhost:8000/static/good.jpeg"} alt = "nada"></img>
+                </p>
+                
+                <p>
+                    The following is your mobile device : {mobile_device} OS: {version}.
+                </p>
+                
+                <p>
+                Thus, do the following to turn off beautification settings:
+                </p>
+                {isIOS &&
+                    <p>
+                        {message.i12_13}
+                    </p>
+                }
+                {!isIOS &&
+                    <p>
+                        {message.android}    
+                    </p>
+                }
+                <Link className='link' to="/instructions2">CONTINUE</Link>
             </section>
-        
             
         
     );

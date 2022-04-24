@@ -2,5 +2,5 @@ from django.shortcuts import render
 
 # Create your views here.
 def index(request):
-    return render(request, 'public/index.html')
+    return render(request, '../django_frontend/build/index.html')
 
