@@ -1,11 +1,4 @@
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
 .App-header {
   background-color: rgb(156, 156, 148);
@@ -13,16 +6,13 @@
   height: 100%;
   position: absolute;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
 }
 
 video {
-  position: inherit;
-  left: 1px;
-  right: 1px;
+  position: fixed;
+  left: 0;
+  right: 0;
 }
-
 
 
 .pic {
@@ -54,13 +44,13 @@ button {
   color: aliceblue;
   opacity: 40%;
   background-color: black;
-  top: 18%;
-  position:absolute;
+  top: 10%;
+  position: fixed;
   text-align: center;
   z-index: 10;
-  width: 200px;
-  height: 40px;
-  padding-top: 8px;
+  width: 12rem;
+  height: 3.5rem;
+  padding-top: 0.5rem;
 }
 
 .rectangle {

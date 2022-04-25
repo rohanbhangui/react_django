@@ -45,29 +45,35 @@ function Instructions() {
                 <p>
                 Here is an example of a bad photo and a good photo.
                 </p>
-                <p>
-                <img className= "img1" src ={"http://localhost:8000/static/bad.jpeg"} alt = "nada"></img>
-                <img className= "img2" src ={"http://localhost:8000/static/good.jpeg"} alt = "nada"></img>
-                </p>
+                <div>
+                <img className= "img-example" src ={"http://localhost:8000/static/bad.jpeg"} alt = "nada"></img>
+                <img className= "img-example" src ={"http://localhost:8000/static/good.jpeg"} alt = "nada"></img>
+                </div>
                 
                 <p>
                     The following is your mobile device : {mobile_device} OS: {version}.
                 </p>
                 
+                <div className="instruction">
                 <p>
                 Thus, do the following to turn off beautification settings:
                 </p>
-                {isIOS &&
+                {isIOS && (
                     <p>
                         {message.i12_13}
                     </p>
-                }
-                {!isIOS &&
+                )}
+                {!isIOS &&(
                     <p>
                         {message.android}    
                     </p>
-                }
+                )}
+                </div>
+                
+                
+                
                 <Link className='link' to="/instructions2">CONTINUE</Link>
+                
             </section>
             
         

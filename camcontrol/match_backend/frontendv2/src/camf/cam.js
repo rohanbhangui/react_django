@@ -110,8 +110,8 @@ function Cam() {
   });
 
   return (
-    <div className="app">
-      <div className="App-header">
+    
+      <section className="App-header">
         <Webcam
           ref={webcamRef}
           screenshotFormat="image/jpeg"
@@ -140,14 +140,7 @@ function Cam() {
       <canvas className = 'rectangle' ref = {rect}> </canvas>
       <div className = "message" id="text"></div>
       <button onClick = {snap}> TAKE PHOTO </button>
-      </div>
-      
-      {image && (
-        <img className="pic"
-          src={image}
-        />
-      )}
-    </div>
+      </section>
   );
 }
 
