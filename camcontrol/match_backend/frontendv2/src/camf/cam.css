@@ -1,48 +1,40 @@
 
 
-section {
-  background-color: rgb(156, 156, 148);
-  
-  min-height: 105vh;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.App-header {
+  position: relative;
 }
-
 
 video {
-  position: fixed;
-  width:100vh;
-  height: 100vh;
-  object-fit: cover;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%) translateY(-50%);
+  display: block;
+}
+
+.overlay {
+  border: 1px solid red;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+}
+
+.overlay > * {
+  display: block;
 }
 
 
-.pic {
-  position:relative;
-  vertical-align: bottom;
-  width: 100px;
-  height: 100px;
-}
-
-button {
+.snap-photo {
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 20px;
   letter-spacing: 1px;
   color: aliceblue;
   opacity: 70%;
   background-color: black;
-  top: 83%;
-  position:absolute;
-  z-index: 10;
-  width: 200px;
-  height: 40px;
-  padding: 1px;
+  position: relative;
+  padding: 0.5rem 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 17%;
 }
 
 .message {
@@ -53,23 +45,21 @@ button {
   opacity: 40%;
   background-color: black;
   top: 10%;
-  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  position: relative;
   text-align: center;
   z-index: 10;
-  width: 12rem;
-  height: 3.5rem;
-  padding-top: 0.5rem;
+  padding-top: 0.5rem 1rem;
+  display: inline-block;
 }
 
 .rectangle {
 	position: relative;
-	width: 40vw;
-	height: 50vh;
-  border-radius: 50%;
-	background-color: transparent;
-	border: 5px solid white;
-	top: 0%;
-	left: 0%;
-	z-index: 10;
+  width: calc(50vh - 4rem);
+  height: 60vh;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-60%);
 }
 

@@ -113,17 +113,13 @@ function Cam() {
 
   return (
     
-      <section className="App-header">
-        <Webcam
-          ref={webcamRef}
-          screenshotFormat="image/jpeg"
-          videoConstraints={{
-            width: window.innerWidth,
-            height: window.innerHeight,
-          }}
-   
-        />
-
+      <div className="App-header">
+        <div className="overlay">
+          <div className="message" id="text"></div>
+          <canvas className='rectangle' ref={rect}></canvas>
+          
+          <button className="snap-photo" onClick={snap}> TAKE PHOTO </button>
+        </div>
         <canvas
           className="c1"
           ref={canvasRef}
@@ -135,10 +131,16 @@ function Cam() {
           }}
           
         />
-      <canvas className = 'rectangle' ref = {rect}> </canvas>
-      <div className = "message" id="text"></div>
-      <button onClick = {snap}> TAKE PHOTO </button>
-      </section>
+        <Webcam
+          ref={webcamRef}
+          screenshotFormat="image/jpeg"
+          videoConstraints={{
+            width: window.innerWidth,
+            height: window.innerHeight,
+          }}
+   
+        />
+      </div>
   );
 }
 

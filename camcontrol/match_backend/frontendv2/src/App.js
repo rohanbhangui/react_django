@@ -10,8 +10,8 @@ function App() {
   return (
     <Routes>
       <Route path='/instructions' element= {<Instructions/>}/>
-      <Route path='instructions2' element={<Instructions2/>}/>
-      <Route path='selfie' element={<Cam/>}/>
+      <Route path='/instructions2' element={<Instructions2/>}/>
+      <Route path='/selfie' element={<Cam/>}/>
       
     </Routes>
   );
