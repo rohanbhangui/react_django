@@ -1,7 +1,7 @@
 {
   "name": "frontendv2",
   "version": "0.1.0",
-  "homepage": "http://renzoespinoza10.github.io/routing",
+  "homepage": "https://renzoespinoza10.github.io/react_django2",
   "private": true,
   "dependencies": {
     "@tensorflow-models/face-landmarks-detection": "0.0.2",

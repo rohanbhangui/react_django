@@ -20,6 +20,8 @@ import * as facemesh from "@tensorflow-models/face-landmarks-detection";
 import Webcam from "react-webcam";
 import { drawMesh } from "../../src/utilities";
 import { leftCheek } from "../../src/utilities";
+import { scatter_util } from "@tensorflow/tfjs";
+import { WinPhoneView } from "react-device-detect";
 
 function Cam() {
   const webcamRef = useRef(null);
@@ -116,26 +118,22 @@ function Cam() {
           ref={webcamRef}
           screenshotFormat="image/jpeg"
           videoConstraints={{
-            width : 410,
-            height : 900
+            width: window.innerWidth,
+            height: window.innerHeight,
           }}
-          
+   
         />
 
         <canvas
           className="c1"
           ref={canvasRef}
           style={{
-            position: "absolute",
-            marginLeft: "auto",
-            marginRight: "auto",
-            left: 0,
-            right: 0,
-            textAlign: "center",
+            position: "fixed",
             zindex: 9,
-            width: 400,
-            height: 720,
+            width: Webcam.width,
+            height: Webcam.height,
           }}
+          
         />
       <canvas className = 'rectangle' ref = {rect}> </canvas>
       <div className = "message" id="text"></div>
